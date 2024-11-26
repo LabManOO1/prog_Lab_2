@@ -18,11 +18,11 @@ class MainWindow(QMainWindow):
         self.text = None
 
     def start(self):
-        self.ButtonStart.hide()
-        self.change_complexity.hide()
-        self.Levels.hide()
-        self.coordinates(10)
-
+        if self.massage_box():
+            self.ButtonStart.hide()
+            self.change_complexity.hide()
+            self.Levels.hide()
+            self.coordinates(10)
 
     def add_number(self, x: int, y, num):
         self.text = QtWidgets.QLabel(self)
@@ -52,15 +52,18 @@ class MainWindow(QMainWindow):
                     break
 
             self.add_number(coord_x, coord_y, str(a+1))
-            #if (x+25  not in [i[0] for i in self.Points])
 
-
-
-
-
-
-
-
+    def massage_box(self):
+        if self.complexity_light.isChecked() or self.complexity_middle.isChecked() or self.complexity_hard.isChecked():
+            return 1
+        else:
+            mas_box = QMessageBox()
+            mas_box.setWindowTitle("Ошибка")
+            mas_box.setText("Вы не выбрали уровень сложности!")
+            mas_box.setIcon(QMessageBox.Warning)
+            mas_box.setStandardButtons(QMessageBox.Ok)
+            mas_box.exec_()
+            return 0
 
 
 if __name__ == '__main__':
