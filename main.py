@@ -240,7 +240,7 @@ class MainWindow(QMainWindow):  # Класс с окном
                 self.clicked_text = i.text()
                 self.current_button = button
 
-    def create_number(self, x: int, y, num):  # Создание виджета с числом
+    def create_number(self, x: int, y: int, num: int):  # Создание виджета с числом
         self.text = QtWidgets.QLabel(self)
         self.text.setText(num)
         self.text.setGeometry(x, y, 25, 50)
@@ -253,7 +253,7 @@ class MainWindow(QMainWindow):  # Класс с окном
         self.Points.append((x, y))
         self.Numbers.append(self.text)
 
-    def create_round_button(self, x, y):  # Создание кнопки, которая скрывает число
+    def create_round_button(self, x: int, y: int):  # Создание кнопки, которая скрывает число
         self.button = QtWidgets.QPushButton(self)
         self.button.setGeometry(x, y, 50, 50)
         self.button.setStyleSheet("border-radius: 25;"
@@ -272,7 +272,7 @@ class MainWindow(QMainWindow):  # Класс с окном
         for i in range(len(self.Points)):
             self.create_round_button(self.Points[i][0] - 6, self.Points[i][1])
 
-    def add_numbers(self, count):  # Метод, при вызове которого создаются виджеты с числами, в случайных местах
+    def add_numbers(self, count: int):  # Метод, при вызове которого создаются виджеты с числами, в случайных местах
         if count > 10:
             count = 10
 
